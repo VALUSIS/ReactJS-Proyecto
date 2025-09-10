@@ -7,7 +7,7 @@ function ItemList({ productos }) {
         <div key={prod.id} style={{ border: "1px solid #ddd", padding: "1rem", borderRadius: "8px" }}>
           <h4>{prod.nombre}</h4>
           <p>$ {prod.precio}</p>
-          {/* Enlaza a detalle */}
+          {}
           <a href={`/item/${prod.id}`}>Ver detalle</a>
         </div>
       ))}

@@ -1,21 +1,35 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ItemList from "./ItemList"; 
-import { useEffect, useState } from "react";
+import { getProducts } from "../data";
 
-function ItemListContainer() {
-  const { categoryId } = useParams(); 
-  const [productos, setProductos] = useState([]);
-
-  
+function ItemListContainer({ greeting }) {
+  const [items, setItems] = useState([]);
+  const { categoryId } = useParams(); // 
   useEffect(() => {
-    
-    setProductos([]); 
+    getProducts().then((res) => {
+      if (categoryId) {
+  setItems(
+    res.filter(
+      (prod) =>
+        prod.category.toLowerCase() === categoryId.toLowerCase()
+    )
+  );
+} else {
+  setItems(res);
+}
+    });
   }, [categoryId]);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1 style={{ textAlign: "center" }}>{categoryId ? `Categoría: ${categoryId}` : "Todos los productos"}</h1>
-      <ItemList productos={productos} />
+    <div style={{ padding: "2rem", textAlign: "center" }}>
+      <h1>{greeting}</h1>
+      <ul className="ul__items">
+        {items.map((prod) => (
+          <li key={prod.id} className="ul__li--item">
+            {prod.name} - ${prod.price}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
