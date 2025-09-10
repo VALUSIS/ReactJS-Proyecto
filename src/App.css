@@ -1,3 +1,8 @@
 body {
   width: 100%;
 }
+
+.ul__li {
+  color: black;
+  text-decoration: none;
+}
