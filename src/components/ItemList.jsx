@@ -1,14 +1,19 @@
+import { Link } from "react-router-dom";
+
 function ItemList({ productos }) {
-  if (!productos || productos.length === 0) return <p>No hay productos para mostrar.</p>;
+  if (!productos || productos.length === 0) {
+    return <p>No hay productos para mostrar.</p>;
+  }
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "1rem" }}>
-      {productos.map(prod => (
-        <div key={prod.id} style={{ border: "1px solid #ddd", padding: "1rem", borderRadius: "8px" }}>
+    <div className="itemlist__grid">
+      {productos.map((prod) => (
+        <div key={prod.id} className="itemlist__card">
           <h4>{prod.nombre}</h4>
           <p>$ {prod.precio}</p>
-          {}
-          <a href={`/item/${prod.id}`}>Ver detalle</a>
+          <Link to={`/item/${prod.id}`} className="itemlist__detalle">
+            Ver detalle
+          </Link>
         </div>
       ))}
     </div>

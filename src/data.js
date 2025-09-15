@@ -1,20 +1,17 @@
 const products = [
+  { id: 1, nombre: "Dell A530", precio: 150000, category: "Notebooks" },
+  { id: 2, nombre: "Acer 14667", precio: 230000, category: "Notebooks" },
+  { id: 3, nombre: "HP Full v23", precio: 190000, category: "Notebooks" },
 
-  { id: 1, name: "Dell A530", price: 150000, category: "Notebooks" },
-  { id: 2, name: "Acer 14667", price: 230000, category: "Notebooks" },
-  { id: 3, name: "HP Full v23", price: 190000, category: "Notebooks" },
+  { id: 4, nombre: "Samsung S25 Ultra", precio: 70000, category: "Celulares" },
+  { id: 5, nombre: "Iphone 13 Pro", precio: 100000, category: "Celulares" },
+  { id: 6, nombre: "Xiaomi Redmi Note 7", precio: 50000, category: "Celulares" },
+  { id: 7, nombre: "Motorola G54", precio: 27000, category: "Celulares" },
 
-  
-  { id: 4, name: "Samsung S25 Ultra", price: 70000, category: "Celulares" },
-  { id: 5, name: "Iphone 13 Pro", price: 100000, category: "Celulares" },
-  { id: 6, name: "Xiaomi Redmi Note 7", price: 50000, category: "Celulares" },
-  { id: 7, name: "Motorola G54", price: 27000, category: "Celulares" },
-
-
-  { id: 8, name: "Smart TV BGH", price: 200000, category: "Televisores" },
-  { id: 9, name: "Smart TV Samsung", price: 250000, category: "Televisores" },
-  { id: 10, name: "Smart TV LG", price: 300000, category: "Televisores" },
-  { id: 11, name: "Smart TV Philips", price: 140000, category: "Televisores" },
+  { id: 8, nombre: "Smart TV BGH", precio: 200000, category: "Televisores" },
+  { id: 9, nombre: "Smart TV Samsung", precio: 250000, category: "Televisores" },
+  { id: 10, nombre: "Smart TV LG", precio: 300000, category: "Televisores" },
+  { id: 11, nombre: "Smart TV Philips", precio: 140000, category: "Televisores" },
 ];
 
 export const getProducts = () => {
@@ -23,4 +20,10 @@ export const getProducts = () => {
   });
 };
 
-export default products;
+export const getProductById = (id) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(products.find((prod) => prod.id === parseInt(id)));
+    }, 1000);
+  });
+};

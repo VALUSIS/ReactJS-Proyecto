@@ -25,3 +25,86 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+
+.itemlist__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.itemlist__card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+}
+
+.itemlist__detalle {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.itemlist__detalle:hover {
+  background: #0056b3;
+}
+
+.itemlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.item__detalle {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.item__detalle:hover {
+  background-color: #0056b3;
+}
+
+.itemdetail {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.itemdetail__btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.itemdetail__btn:hover {
+  background-color: #218838;
+}

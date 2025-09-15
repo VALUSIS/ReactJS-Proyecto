@@ -1,19 +1,19 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ItemDetail from "./ItemDetail"; 
+import { useParams } from "react-router-dom";
+import { getProductById } from "../data";
+import ItemDetail from "./ItemDetail";
 
-function ItemDetailContainer() {
-  const { itemId } = useParams();
+function ItemDetailContainer({ onAdd }) {
   const [producto, setProducto] = useState(null);
+  const { itemId } = useParams();
 
   useEffect(() => {
-    
-    setProducto(null);
+    getProductById(itemId).then((res) => setProducto(res));
   }, [itemId]);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      {producto ? <ItemDetail producto={producto} /> : <p>Cargando producto...</p>}
+    <div>
+      <ItemDetail producto={producto} onAdd={onAdd} />
     </div>
   );
 }

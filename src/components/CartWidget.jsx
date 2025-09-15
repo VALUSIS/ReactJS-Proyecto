@@ -1,12 +1,12 @@
 import carrito from "../assets/carrito.png";
 
-function CartWidget() {
+function CartWidget({ cartCount }) {
   return (
-    <div>
-      <img src={carrito} alt="Carrito" style={{ height: "50px", marginRight: "10px"}} />
-      <span>0</span>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <img src={carrito} alt="Carrito" style={{ height: "50px", marginRight: "10px" }} />
+      <span>{cartCount}</span>
     </div>
-  )
+  );
 }
 
-export default CartWidget
+export default CartWidget;
