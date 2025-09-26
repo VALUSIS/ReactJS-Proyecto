@@ -1,11 +1,16 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../components/CartContext";
 import carrito from "../assets/carrito.png";
 
-function CartWidget({ cartCount }) {
+function CartWidget() {
+  const { calcItemsQty } = useContext(CartContext);
+
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <img src={carrito} alt="Carrito" style={{ height: "50px", marginRight: "10px" }} />
-      <span>{cartCount}</span>
-    </div>
+    <Link to="/cart" className="cart-widget">
+      <img src={carrito} alt="Carrito" className="cart-widget__icon" />
+      <span className="cart-widget__count">{calcItemsQty()}</span>
+    </Link>
   );
 }
 

@@ -6,17 +6,18 @@ function ItemList({ productos }) {
   }
 
   return (
-    <div className="itemlist__grid">
+    <ul className="ul">
       {productos.map((prod) => (
-        <div key={prod.id} className="itemlist__card">
-          <h4>{prod.nombre}</h4>
-          <p>$ {prod.precio}</p>
-          <Link to={`/item/${prod.id}`} className="itemlist__detalle">
-            Ver detalle
+        <li key={prod.id} className="ul__li">
+          <img src={prod.image} alt={prod.name} className="ul__li--img" />
+          <h3>{prod.name}</h3>
+          <p>${prod.price}</p>
+          <Link to={`/item/${prod.id}`} className="ul__li--btn">
+            Ver Detalle
           </Link>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

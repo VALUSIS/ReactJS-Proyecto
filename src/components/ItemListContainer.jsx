@@ -24,7 +24,7 @@ function ItemListContainer({ greeting }) {
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h1 style={{ textAlign: "center" }}>{greeting}</h1>
+      <h1 style={{ textAlign: "center",}}>{greeting}</h1>
       <ItemList productos={items} />
     </div>
   );

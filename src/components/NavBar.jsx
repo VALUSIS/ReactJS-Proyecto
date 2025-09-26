@@ -1,26 +1,45 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
 import CartWidget from "./CartWidget";
 import logo from "../assets/logo.png";
+import { CartContext } from "../components/CartContext";
 
-function NavBar({ cartCount }) {
-  const activeStyle = { fontWeight: "600", color: "#0d6efd" };
+function NavBar() {
+  const { calcItemsQty, cartList } = useContext(CartContext);
 
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", padding: "1rem", background: "#eee" }}>
-      <h2>
-        <NavLink to="/">
-          <img src={logo} alt="Logo" style={{ height: "60px" }} />
-        </NavLink>
-      </h2>
+    <nav className="navbar">
+      {/* Logo */}
+      <NavLink to="/">
+        <img src={logo} alt="Logo" className="navbar__logo" />
+      </NavLink>
 
-      <ul style={{ listStyle: "none", display: "flex", gap: "1rem", margin: 0 }}>
-        <li><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Inicio</NavLink></li>
-        <li><NavLink to="/category/Notebooks" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Notebooks</NavLink></li>
-        <li><NavLink to="/category/Celulares" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Celulares</NavLink></li>
-        <li><NavLink to="/category/Televisores" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Televisores</NavLink></li>
+      {/* Menú */}
+      <ul className="navbar__menu">
+        <li>
+          <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
+            Inicio
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/Notebooks" className={({ isActive }) => isActive ? "active" : ""}>
+            Notebooks
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/Celulares" className={({ isActive }) => isActive ? "active" : ""}>
+            Celulares
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/Televisores" className={({ isActive }) => isActive ? "active" : ""}>
+            Televisores
+          </NavLink>
+        </li>
       </ul>
-
-      <CartWidget cartCount={cartCount} />
+      <div className="navbar__cart">
+  <CartWidget />
+</div>
     </nav>
   );
 }

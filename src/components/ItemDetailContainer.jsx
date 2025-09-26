@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../data";
 import ItemDetail from "./ItemDetail";
 
-function ItemDetailContainer({ onAdd }) {
-  const [producto, setProducto] = useState(null);
+function ItemDetailContainer() {
   const { itemId } = useParams();
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    getProductById(itemId).then((res) => setProducto(res));
+    getProductById(itemId).then((prod) => setProduct(prod));
   }, [itemId]);
 
+  if (!product) return <p className="loading">Cargando producto...</p>;
+
   return (
-    <div>
-      <ItemDetail producto={producto} onAdd={onAdd} />
+    <div className="itemdetail-container">
+      <ItemDetail producto={product} />
     </div>
   );
 }
