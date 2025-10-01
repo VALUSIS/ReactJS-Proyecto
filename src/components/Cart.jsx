@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../components/CartContext";
 import { Link } from "react-router-dom";
+import CheckoutForm from "./CheckoutForm";
 
 const Cart = () => {
   const { cartList, deleteItem, clear, calcTotal } = useContext(CartContext);
@@ -15,23 +16,23 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart-container">
-      <h2>Mi Carrito</h2>
+  <div className="cart-container">
+    <h2>Mi Carrito</h2>
 
-      {cartList.map((prod) => (
-        <div key={prod.id} className="cart-item">
-          <h3>{prod.name}</h3>
-          <p>Cantidad: {prod.quantity}</p>
-          <p>Precio unitario: ${prod.price}</p>
-          <p>Subtotal: ${prod.price * prod.quantity}</p>
-          <button onClick={() => deleteItem(prod.id)}>Eliminar</button>
-        </div>
-      ))}
+    {cartList.map((item) => (
+      <div key={item.id}>
+        <p>{item.name} - ${item.price} x {item.quantity}</p>
+      </div>
+    ))}
 
-      <div className="cart-total">Total: ${calcTotal()}</div>
-      <button onClick={clear}>Vaciar carrito</button>
-    </div>
-  );
+    <div className="cart-total">Total: ${calcTotal()}</div>
+    <button onClick={clear}>Vaciar carrito</button>
+
+    <hr />
+    <CheckoutForm />
+  </div>
+);
+
 };
 
 export default Cart;
